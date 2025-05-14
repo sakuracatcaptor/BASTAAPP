@@ -1,0 +1,7 @@
+{
+  "name": "BASTA",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
