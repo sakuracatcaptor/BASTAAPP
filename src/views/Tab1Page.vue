@@ -7,12 +7,14 @@
         
 
       </ion-toolbar>
-      <ion-label size="large"> {{ formattedTime }}</ion-label>      
-      <p v-if="state.isOver"> Tiempo terminado </p> 
+
 
     </ion-header>
     <ion-content :fullscreen="true">
-      <ion-button @click="startTimer" :disabled="isRunning" size="large">Iniciar</ion-button>
+      <p>Para jugar basta da clic en iniciar, empezará a correr el tiempo. Da clic en la letra que jugaste para reiniciar el tiempo. Si se termina el tiempo o las letras, da clic en el botón iniciar para reiniciar la partida.</p>
+      <ion-label size="large" color="danger"><h1>{{ formattedTime }}</h1> </ion-label>      
+      <p v-if="state.isOver"> Tiempo terminado </p> 
+      <ion-button @click="startTimer" :disabled="isRunning" size="smal" color="success">Iniciar</ion-button>
       <ion-list>
         <ion-label v-for="tecla in teclas" :key="tecla.id">
           <ion-button @click="clicLetra(tecla), resetTimer()" :disabled="tecla.disabled" size="large" shape="round">{{ tecla.label }}</ion-button>
