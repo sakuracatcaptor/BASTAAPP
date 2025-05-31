@@ -7,11 +7,15 @@
         
 
       </ion-toolbar>
-      <ion-label size="large"> {{ formattedTime }}</ion-label>      
       <p v-if="state.isOver"> Tiempo terminado </p> 
 
     </ion-header>
+
     <ion-content :fullscreen="true">
+       <ion-text color="danger">
+          <h1>{{ formattedTime }}</h1>
+        </ion-text>
+
       <ion-button @click="startTimer" :disabled="isRunning" size="large">Iniciar</ion-button>
       <ion-list>
         <ion-label v-for="tecla in teclas" :key="tecla.id">
@@ -158,6 +162,10 @@ function PartidaEnd(){
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+h1{
+  font-size: 5em;
 }
 ion-label ion-list{
     display: inline-block;
