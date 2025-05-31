@@ -4,19 +4,21 @@
     <ion-header>
       <ion-toolbar>
         <ion-title>Juega Basta</ion-title>
-        
-
       </ion-toolbar>
-      <p v-if="state.isOver"> Tiempo terminado </p> 
-
+      
     </ion-header>
 
-    <ion-content :fullscreen="true">
-       <ion-text color="danger">
+      <ion-content>
+        <ion-text color="danger" v-if="state.isOver">
+        <p class="timeOver" > Tiempo terminado </p>
+        </ion-text>
+       <ion-text color="danger" class="ion-padding">
           <h1>{{ formattedTime }}</h1>
         </ion-text>
       <!-- <p>Para jugar basta da clic en iniciar, empezará a correr el tiempo. Da clic en la letra que jugaste para reiniciar el tiempo. Si se termina el tiempo o las letras, da clic en el botón iniciar para reiniciar la partida.</p>     -->
-      <ion-button @click="startTimer" :disabled="isRunning" color="success" expand="block">Iniciar</ion-button>
+      <ion-button @click="startTimer" :disabled="isRunning" color="success">
+        {{ state.isOver ? 'Reiniciar' : 'Iniciar' }}
+      </ion-button>
       <ion-list>
         <ion-label v-for="tecla in teclas" :key="tecla.id">
           <ion-button @click="clicLetra(tecla), resetTimer()" :disabled="tecla.disabled" size="large" shape="round">{{ tecla.label }}</ion-button>
@@ -29,9 +31,6 @@
 <script setup lang="ts">
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonList} from '@ionic/vue';
 import ExploreContainer from '@/components/ExploreContainer.vue';
-
-
-
 </script>
 
 //Script para botones
@@ -166,6 +165,9 @@ function PartidaEnd(){
 
 h1{
   font-size: 5em;
+}
+.timeOver { 
+  font-size: 2em;
 }
 ion-label ion-list{
     display: inline-block;
